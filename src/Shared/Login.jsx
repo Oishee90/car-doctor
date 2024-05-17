@@ -4,7 +4,17 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
-  const {signIn} = useContext(AuthContext)
+  const {signIn, googleLogIn,loading} = useContext(AuthContext)
+  const handleGoogleLogin = () => {
+    googleLogIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 const handleLogin = event => {
  
     event.preventDefault();
@@ -51,6 +61,13 @@ const handleLogin = event => {
               </div>
             </form>
             <p className="text-center">New To Car Doctors <Link to={"/signup"}>SignUP</Link></p>
+            <button
+            className="btn btn-secondary mt-4"
+            onClick={handleGoogleLogin}
+            disabled={loading}
+          >
+            Sign Up with Google
+          </button>
           </div>
         </div>
       </div>

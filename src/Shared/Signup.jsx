@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import img from "../assets/images/login/login.svg"
 import { useContext } from "react";
-import { AuthContext } from "../FirebaseProvider/FirebaseProvider";
+import { AuthContext } from "../Providers/AuthProvider";
+
 
 const Signup = () => {
   const {createUser} = useContext(AuthContext)
